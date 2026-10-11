@@ -13,4 +13,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}
-        run: gh pr review "$PR" --repo "$GITHUB_REPOSITORY" --approve --body "spike bot approval"
+        run: gh pr review "$PR" --repo "$GITHUB_REPOSITORY" --request-changes --body "spike bot block"

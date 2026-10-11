@@ -1,9 +1,16 @@
 name: bot-approve
-on: { pull_request: { types: [opened, synchronize] } }
-permissions: { pull-requests: write, contents: read }
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  pull-requests: write
+  contents: read
 jobs:
   approve:
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr review "$PR" --repo "$GITHUB_REPOSITORY" --approve -b "spike: bot approval"
-        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}", PR: "${{ github.event.pull_request.number }}" }
+      - name: approve as github-actions bot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: gh pr review "$PR" --repo "$GITHUB_REPOSITORY" --approve --body "spike bot approval"

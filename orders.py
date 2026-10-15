@@ -1,3 +1,5 @@
+"""Order helpers."""
+
 import sqlite3
 
 

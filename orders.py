@@ -1,3 +1,4 @@
+"""Order helpers."""
 import sqlite3
 
 def find_orders(conn: sqlite3.Connection, customer_name: str) -> list[tuple]:
